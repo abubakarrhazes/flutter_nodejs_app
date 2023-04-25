@@ -15,14 +15,17 @@ class OptionalLogins extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: Colors.grey, style: BorderStyle.solid),
+          border: Border.all(color: Colors.green, style: BorderStyle.solid),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(image),
+            Image.asset(
+              image,
+              height: 20,
+            ),
             const SizedBox(
-              width: 1,
+              width: 5,
             ),
             Text(
               text,
