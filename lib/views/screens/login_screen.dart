@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nodejs_app/views/widgets/custom_button.dart';
 import 'package:flutter_nodejs_app/views/widgets/optional_logins.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -84,34 +85,17 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 10,
               ),
-              GestureDetector(
-                onTap: () {
-                  print('Name');
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 40,
-                  width: 250,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Text(
-                    'Sign In With Password',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ),
-              ),
+              CustomButton(
+                  text: 'Sign In Password',
+                  actionTap: () {
+                    Navigator.pushNamed(context, '/login');
+                  }),
               const SizedBox(
                 height: 20,
               ),
               GestureDetector(
                 onTap: () {
-                  print('Name');
+                  Navigator.pushNamed(context, '/register');
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
