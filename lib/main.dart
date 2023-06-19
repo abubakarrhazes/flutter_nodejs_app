@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_nodejs_app/views/screens/forgot_password.dart';
+import 'package:flutter_nodejs_app/views/screens/login.dart';
 import 'package:flutter_nodejs_app/views/screens/login_screen.dart';
 import 'package:flutter_nodejs_app/views/screens/register_screen.dart';
 
@@ -18,13 +20,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter NodeJs App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
+        '/login': (context) => Login(),
+        1
       },
     );
   }
