@@ -15,8 +15,8 @@ dotenv.config();
 app.use(express.json());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
-app.use('/auth', authRouter.register);
-app.use('/auth', authRouter.login);
+app.use('/auth', authRouter);
+
 
 
 
