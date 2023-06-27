@@ -1,19 +1,29 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const authRouter = require('./routes/auth');
-const PORT = 3000;
+const bodyparser = require('body-parser');
+const authRouter = require('./routes/auth.js');
+const dotenv = require('dotenv');
 
-const URI = "mongodb+srv://alrhazes2:Adam5992@auth-users.ypmtvqn.mongodb.net/?retryWrites=true&w=majority";
+const {register } = require('./controllers/auth.js');
+
+const PORT = process.env.PORT || 9090
 
 const app = express();
+dotenv.config();
 
 //Middlewares
 app.use(express.json());
-app.use(authRouter);
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended: true}));
+app.use('/auth', authRouter.register);
+app.use('/auth', authRouter.login);
+
 
 
 //Database Connection
-mongoose.connect(URI).then(()=>{
+mongoose.connect(process.env.MONGO_DB, {
+  
+}).then(()=>{
   console.log("Connected Succesfully");
 
 
@@ -25,5 +35,5 @@ mongoose.connect(URI).then(()=>{
 
 app.listen(PORT, "0.0.0.0", ()=>{
 
-console.log(`Connected on Port ${PORT}`);
+console.log(`Connected on Port http:localhost: ${PORT}`);
 })
