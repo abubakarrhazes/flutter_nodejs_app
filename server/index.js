@@ -16,6 +16,7 @@ app.use(express.json());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use('/auth', authRouter);
+app.use('/user', authRouter);
 
 
 
