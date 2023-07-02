@@ -13,7 +13,7 @@ const reportSchema = mongoose.Schema({
         
 
     }, 
-    details : {
+    detail : {
         required: true,
         type: String,
         

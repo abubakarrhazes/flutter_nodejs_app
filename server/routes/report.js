@@ -1,11 +1,11 @@
 const express = require('express');
-
+const {report} = require('../controllers/reportController.js')
 const verifyToken = require('../middlewares/auth.js');
 
 
-const authRouter = express.Router();
+const reportRouter = express.Router();
+reportRouter.post('/report',  report);
 
-authRouter.post('/report', verifyToken,  report);
 
 
-module.exports = authRouter;
+module.exports = reportRouter;
