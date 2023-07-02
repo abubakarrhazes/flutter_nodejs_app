@@ -1,6 +1,5 @@
 # flutter_nodejs_app
-
-Authentication using NodeJs
+A Mobile app development using Flutter as front-end with NodeJs as back-end. This project was just to get my hands dirty coding with NodeJs 
 
 ## Getting Started
 
