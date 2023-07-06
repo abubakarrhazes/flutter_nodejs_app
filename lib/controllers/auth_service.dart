@@ -23,7 +23,11 @@ class AuthService {
           dateOfBirth: '',
           type: '',
           token: '');
-      HttpResponse response = (await  http.post(Uri.parse('${URI} auth/register'))) as HttpResponse;
+      http.Response res = await http.post(Uri.parse('$URI/auth/register'),
+          body: user.toJson(),
+          headers: <String, String>{
+            'Content-Type ': 'application/json; charset=UTF-8'
+          });
     } catch (e) {}
   }
 }
