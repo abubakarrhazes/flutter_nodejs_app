@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const authRouter = require('./routes/auth.js');
 const userRoutes = require('./routes/user.js');
+const reportRouter = require('./routes/report.js');
+const verifyToken = require('./middlewares/verify.js');
 const dotenv = require('dotenv');
+
 
 
 
@@ -17,7 +20,8 @@ app.use(express.json());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use('/auth', authRouter);
-app.use('/user', userRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/report', reportRouter);
 
 
 

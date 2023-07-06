@@ -7,22 +7,21 @@ const User = require('../models/user.js');
 /* Report Crime */
 
 
-const report = async (req, res) => {
+const reportCrime = async (req, res) => {
 
 
     try{
-        const {userId , category , detail, location} = req.body;
+        const {category , detail, location} = req.body;
         const user = await User.findById(userId);
-
         const reportCrime = new Report({
-            name : user.name,
-            email : user.email,
+            name: user.name,
+            email: user.email,
             category,
             detail,
             location,
         })
         const CaseReported = await reportCrime.save();
-        res.status(200).json({msg: 'Crime reported Succesfullt'});
+        res.status(200).json({msg: 'Crime Reported Succesfully'});
 
     }catch(err){
         res.status(500).json({err: err.msg});
@@ -30,9 +29,12 @@ const report = async (req, res) => {
     }
 }
 
-const reported = async (req,res )=> {
 
-    res.send('Hello world');
+const getAllReportCrime = async (req, res) => {
+
+    res.send("Hola Amigo");
 }
 
-module.exports = {report};
+
+
+module.exports = {reportCrime, getAllReportCrime};

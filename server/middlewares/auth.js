@@ -1,24 +1,27 @@
 const jwt = require ('jsonwebtoken');
+const User = require ('../models/user');
 const verifyToken = async (req, res, next) => {
 
-    try{
-        let token = req.header("Authorization");
-        if(!token){
-            res.status(403).send("Access Denied");
+
+        const authHeader = req.header.token;
+        if(authHeader){
+            const token = authHeader.split("")(1);
+            jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, user) => {
+                if(err) res.status(403).json("Invalid Toke");
+                req.user = user;
+                console.log(user);
+
+                next();
+
+            })
+
+        }
+        else{
+            res.status(500).json({msg: "You are restricted from performing this operation"});
+
         }
 
-        if(token.startWith("Bearer")){
-            token = token.slice(7,token.length).trimLeft();
-        }
-        const verified =  jwt.verify(token, process.env.JWT_SECRET_KEY);
-         req.user = verified;
-        next();
-
-    }catch(err){
-        res.status(500).json({err: err.message});
-
-
-    }
+    
 }
 
 const verifyAndAuthorization = async (req, res, next) =>{
